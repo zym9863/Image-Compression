@@ -32,27 +32,51 @@ const percentage = computed(() =>
 .progress-bar {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
+  background: var(--bg-secondary);
+  padding: 12px;
+  border: 1px solid var(--border-color);
 }
 .bar-track {
   width: 100%;
-  height: 6px;
-  background: var(--bg-secondary);
-  border-radius: 3px;
+  height: 12px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
   overflow: hidden;
+  position: relative;
 }
 .bar-fill {
   height: 100%;
   background: var(--color-primary);
-  border-radius: 3px;
   transition: width 0.3s ease;
+  position: relative;
+}
+.bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(0, 0, 0, 0.1) 10px,
+    rgba(0, 0, 0, 0.1) 20px
+  );
 }
 .bar-fill.has-error {
   background: var(--color-warning);
 }
 .progress-text {
   font-size: 12px;
-  color: var(--text-secondary);
+  font-weight: 800;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  justify-content: space-between;
 }
 .failed-text {
   color: var(--color-error);

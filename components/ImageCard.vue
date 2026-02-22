@@ -74,33 +74,53 @@ defineEmits<{
 .image-card {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 8px;
-  border-radius: 8px;
+  gap: 12px;
+  padding: 8px 12px;
   cursor: pointer;
-  transition: background 0.15s;
-  border: 2px solid transparent;
+  transition: all 0.2s;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
+  position: relative;
+}
+.image-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: transparent;
+  transition: background 0.2s;
 }
 .image-card:hover {
-  background: var(--bg-hover);
+  background: var(--bg-secondary);
+  border-color: var(--text-secondary);
 }
 .image-card.selected {
   border-color: var(--color-primary);
   background: var(--color-primary-bg);
 }
+.image-card.selected::before {
+  background: var(--color-primary);
+}
 .card-thumb {
   position: relative;
   width: 48px;
   height: 48px;
-  border-radius: 6px;
   overflow: hidden;
   flex-shrink: 0;
   background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
 }
 .card-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: grayscale(0.2) contrast(1.1);
+}
+.image-card:hover .card-thumb img,
+.image-card.selected .card-thumb img {
+  filter: grayscale(0) contrast(1);
 }
 .thumb-placeholder {
   width: 100%;
@@ -113,7 +133,7 @@ defineEmits<{
 .status-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(9, 9, 11, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -121,8 +141,8 @@ defineEmits<{
 .spinner {
   width: 20px;
   height: 20px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top-color: white;
+  border: 2px solid var(--border-color);
+  border-top-color: var(--color-primary);
   border-radius: 50%;
   animation: spin 0.6s linear infinite;
 }
@@ -132,15 +152,19 @@ defineEmits<{
 .card-info {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 .card-name {
   margin: 0;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 700;
   color: var(--text-primary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-family: var(--font-mono);
 }
 .card-error {
   font-size: 11px;
@@ -148,28 +172,42 @@ defineEmits<{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-family: var(--font-mono);
+  background: rgba(255, 51, 51, 0.1);
+  padding: 2px 4px;
+  border: 1px solid var(--color-error);
+  display: inline-block;
+  width: fit-content;
 }
 .card-actions {
   display: flex;
-  gap: 4px;
+  gap: 8px;
   flex-shrink: 0;
 }
 .action-btn {
-  padding: 4px;
-  border: none;
-  background: transparent;
-  border-radius: 4px;
+  padding: 6px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-primary);
   cursor: pointer;
   color: var(--text-secondary);
-  transition: all 0.15s;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .action-btn:hover {
   background: var(--bg-secondary);
+  border-color: var(--text-primary);
+  color: var(--text-primary);
 }
 .download-btn:hover {
   color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: var(--color-primary-bg);
 }
 .remove-btn:hover {
   color: var(--color-error);
+  border-color: var(--color-error);
+  background: rgba(255, 51, 51, 0.1);
 }
 </style>

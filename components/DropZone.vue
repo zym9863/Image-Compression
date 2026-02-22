@@ -75,16 +75,33 @@ function onFileChange(e: Event) {
 <style scoped>
 .drop-zone {
   border: 2px dashed var(--border-color);
-  border-radius: 12px;
-  padding: 32px 16px;
+  padding: 40px 20px;
   text-align: center;
   cursor: pointer;
   transition: all 0.2s;
-  background: var(--bg-primary);
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+.drop-zone::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 255, 255, 0.02) 10px,
+    rgba(255, 255, 255, 0.02) 20px
+  );
+  pointer-events: none;
 }
 .drop-zone:hover:not(.disabled) {
   border-color: var(--color-primary);
-  background: var(--color-primary-bg);
+  background: var(--bg-hover);
 }
 .drop-zone.drag-over {
   border-color: var(--color-primary);
@@ -94,30 +111,44 @@ function onFileChange(e: Event) {
 .drop-zone.disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  filter: grayscale(1);
 }
 .hidden-input {
   display: none;
 }
 .drop-content {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 }
 .upload-icon {
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+.drop-zone:hover:not(.disabled) .upload-icon,
+.drop-zone.drag-over .upload-icon {
   color: var(--color-primary);
 }
 .drop-text {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 800;
   color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   margin: 0;
 }
 .drop-hint {
   font-size: 12px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  background: var(--bg-primary);
+  padding: 4px 8px;
+  border: 1px solid var(--border-color);
   margin: 0;
 }
 </style>

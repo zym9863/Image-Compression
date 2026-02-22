@@ -73,15 +73,35 @@ function startDrag(e: MouseEvent) {
 
 <style scoped>
 .preview-panel {
-  border-radius: 8px;
+  border: 1px solid var(--border-color);
   overflow: hidden;
   background: var(--bg-secondary);
+  position: relative;
+}
+.preview-panel::before {
+  content: 'PREVIEW';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  z-index: 10;
+  pointer-events: none;
 }
 .preview-container {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
   overflow: hidden;
+  background: repeating-conic-gradient(
+    var(--bg-primary) 0%,
+    var(--bg-primary) 25%,
+    var(--bg-secondary) 0%,
+    var(--bg-secondary) 50%
+  );
+  background-size: 20px 20px;
 }
 .preview-img {
   width: 100%;
@@ -97,8 +117,8 @@ function startDrag(e: MouseEvent) {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 3px;
-  background: white;
+  width: 2px;
+  background: var(--color-primary);
   cursor: ew-resize;
   transform: translateX(-50%);
   z-index: 2;
@@ -110,13 +130,12 @@ function startDrag(e: MouseEvent) {
   transform: translate(-50%, -50%);
   width: 24px;
   height: 24px;
-  background: white;
-  border-radius: 50%;
+  background: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-  color: #333;
+  color: var(--bg-primary);
+  border: 2px solid var(--bg-primary);
 }
 .preview-labels {
   position: absolute;
@@ -126,21 +145,28 @@ function startDrag(e: MouseEvent) {
   display: flex;
   justify-content: space-between;
   pointer-events: none;
+  z-index: 3;
 }
 .label-original,
 .label-compressed {
-  font-size: 11px;
-  padding: 2px 6px;
-  border-radius: 4px;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 8px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 .preview-empty {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 120px;
+  height: 160px;
   color: var(--text-muted);
   font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 </style>

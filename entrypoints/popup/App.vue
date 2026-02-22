@@ -214,126 +214,175 @@ async function saveSettings() {
 .app {
   display: flex;
   flex-direction: column;
-  min-height: 480px;
+  min-height: 520px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
 }
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 16px;
-  border-bottom: 1px solid var(--border-color);
+  padding: 16px 20px;
+  border-bottom: 2px solid var(--border-color);
+  background: var(--bg-secondary);
 }
 .title {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 800;
   color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.title::before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: var(--color-primary);
+  border-radius: 2px;
 }
 .tab-pills {
   display: flex;
-  gap: 2px;
-  background: var(--bg-secondary);
-  border-radius: 6px;
-  padding: 2px;
+  gap: 4px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: 4px;
 }
 .tab-btn {
-  padding: 4px 12px;
-  border: none;
+  padding: 6px 16px;
+  border: 1px solid transparent;
   background: transparent;
-  border-radius: 4px;
   font-size: 12px;
+  font-weight: 700;
   color: var(--text-secondary);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all 0.2s;
 }
 .tab-btn.active {
-  background: var(--bg-primary);
+  background: var(--color-primary);
+  color: var(--bg-primary);
+  border-color: var(--color-primary);
+}
+.tab-btn:hover:not(.active) {
   color: var(--text-primary);
-  font-weight: 600;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-color: var(--border-color);
 }
 .content {
   flex: 1;
-  padding: 12px 16px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   overflow-y: auto;
 }
 .actions {
   display: flex;
-  gap: 8px;
-  padding-top: 4px;
+  gap: 12px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border-color);
+  margin-top: auto;
 }
 .btn {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 8px;
+  padding: 12px 20px;
+  border: 1px solid var(--border-color);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 800;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 .btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  filter: grayscale(1);
 }
 .btn-primary {
   background: var(--color-primary);
-  color: white;
+  color: var(--bg-primary);
+  border-color: var(--color-primary);
   flex: 1;
+  box-shadow: 4px 4px 0 var(--border-color);
 }
 .btn-primary:hover:not(:disabled) {
-  filter: brightness(1.1);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--border-color);
+}
+.btn-primary:active:not(:disabled) {
+  transform: translate(4px, 4px);
+  box-shadow: none;
 }
 .btn-secondary {
   background: var(--bg-secondary);
   color: var(--text-primary);
+  box-shadow: 4px 4px 0 var(--border-color);
 }
 .btn-secondary:hover:not(:disabled) {
   background: var(--bg-hover);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--border-color);
+}
+.btn-secondary:active:not(:disabled) {
+  transform: translate(4px, 4px);
+  box-shadow: none;
 }
 .btn-ghost {
   background: transparent;
   color: var(--text-secondary);
+  border-style: dashed;
 }
 .btn-ghost:hover:not(:disabled) {
-  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-style: solid;
 }
 .settings-section {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 12px;
+  background: var(--bg-secondary);
+  padding: 20px;
+  border: 1px solid var(--border-color);
 }
 .section-title {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 800;
   color: var(--text-primary);
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 8px;
 }
 .section-desc {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-secondary);
+  font-family: var(--font-mono);
 }
 .section-desc a {
   color: var(--color-primary);
   text-decoration: none;
+  border-bottom: 1px solid var(--color-primary);
 }
 .section-desc a:hover {
-  text-decoration: underline;
+  background: var(--color-primary);
+  color: var(--bg-primary);
 }
 .api-key-input {
   display: flex;
   gap: 8px;
+  margin-top: 8px;
 }
 .input {
   flex: 1;
-  padding: 8px 12px;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  font-size: 13px;
+  padding: 12px 16px;
+  border: 2px solid var(--border-color);
+  font-size: 14px;
   background: var(--bg-primary);
-  color: var(--text-primary);
+  color: var(--color-primary);
   outline: none;
-  transition: border-color 0.15s;
+  transition: border-color 0.2s;
+  font-family: var(--font-mono);
 }
 .input:focus {
   border-color: var(--color-primary);
@@ -341,10 +390,14 @@ async function saveSettings() {
 .settings-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 16px;
+  margin-top: 8px;
 }
 .saved-hint {
-  font-size: 12px;
-  color: var(--color-success);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  font-family: var(--font-mono);
 }
 </style>

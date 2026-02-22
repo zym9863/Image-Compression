@@ -116,45 +116,50 @@ function updateResize<K extends keyof ResizeOptions>(
 .compression-controls {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
+  background: var(--bg-secondary);
+  padding: 16px;
+  border: 1px solid var(--border-color);
 }
 .control-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
 }
 .control-label {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  font-weight: 500;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 800;
   color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 .value-badge {
-  background: var(--bg-secondary);
-  padding: 1px 6px;
-  border-radius: 4px;
+  background: var(--color-primary);
+  padding: 2px 8px;
   font-size: 12px;
-  font-weight: 600;
-  color: var(--color-primary);
+  font-weight: 800;
+  color: var(--bg-primary);
+  font-family: var(--font-mono);
 }
 .slider {
   width: 100%;
-  height: 4px;
+  height: 8px;
   -webkit-appearance: none;
   appearance: none;
-  background: var(--bg-secondary);
-  border-radius: 2px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
   outline: none;
 }
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 16px;
-  height: 16px;
-  border-radius: 50%;
+  height: 24px;
   background: var(--color-primary);
   cursor: pointer;
+  border: 1px solid var(--bg-primary);
 }
 .format-options {
   display: flex;
@@ -164,45 +169,75 @@ function updateResize<K extends keyof ResizeOptions>(
 .format-option {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   cursor: pointer;
+  background: var(--bg-primary);
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s;
+}
+.format-option:has(input:checked) {
+  border-color: var(--color-primary);
+  background: var(--color-primary-bg);
 }
 .format-option input[type="radio"] {
   accent-color: var(--color-primary);
+  width: 14px;
+  height: 14px;
 }
 .format-label {
   font-size: 13px;
+  font-weight: 700;
+  font-family: var(--font-mono);
 }
 .resize-inputs {
   display: flex;
-  gap: 8px;
+  gap: 12px;
   align-items: center;
   flex-wrap: wrap;
+  background: var(--bg-primary);
+  padding: 12px;
+  border: 1px solid var(--border-color);
 }
 .size-input {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
 }
 .size-input label {
   font-size: 12px;
+  font-weight: 700;
   color: var(--text-secondary);
+  text-transform: uppercase;
 }
 .size-input input {
-  width: 70px;
-  padding: 4px 6px;
+  width: 80px;
+  padding: 6px 8px;
   border: 1px solid var(--border-color);
-  border-radius: 4px;
   font-size: 13px;
-  background: var(--bg-primary);
-  color: var(--text-primary);
+  background: var(--bg-secondary);
+  color: var(--color-primary);
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+.size-input input:focus {
+  border-color: var(--color-primary);
+  outline: none;
 }
 .lock-ratio {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   font-size: 12px;
+  font-weight: 700;
   color: var(--text-secondary);
   cursor: pointer;
+  text-transform: uppercase;
+}
+.lock-ratio input[type="checkbox"],
+.control-label input[type="checkbox"] {
+  accent-color: var(--color-primary);
+  width: 14px;
+  height: 14px;
 }
 </style>

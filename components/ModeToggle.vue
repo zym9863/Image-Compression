@@ -36,36 +36,43 @@ defineEmits<{
 <style scoped>
 .mode-toggle {
   display: flex;
-  background: var(--bg-secondary);
-  border-radius: 8px;
-  padding: 2px;
-  gap: 2px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: 4px;
+  gap: 4px;
 }
 .toggle-btn {
   flex: 1;
-  padding: 6px 12px;
-  border: none;
+  padding: 8px 16px;
+  border: 1px solid transparent;
   background: transparent;
-  border-radius: 6px;
   font-size: 13px;
+  font-weight: 800;
   color: var(--text-secondary);
   cursor: pointer;
   transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 .toggle-btn.active {
   background: var(--color-primary);
-  color: white;
-  font-weight: 600;
+  color: var(--bg-primary);
+  border-color: var(--color-primary);
 }
 .toggle-btn:hover:not(.active) {
-  background: var(--bg-hover);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
 }
 .warning {
-  margin-top: 4px;
-  padding: 6px 10px;
+  margin-top: 8px;
+  padding: 8px 12px;
   font-size: 12px;
+  font-weight: 700;
   color: var(--color-warning);
   background: var(--color-warning-bg);
-  border-radius: 6px;
+  border: 1px solid var(--color-warning);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 </style>

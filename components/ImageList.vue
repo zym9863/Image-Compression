@@ -38,37 +38,31 @@ defineEmits<{
 .image-list {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 .list-scroll {
   max-height: 200px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 2px;
-}
-.list-scroll::-webkit-scrollbar {
-  width: 4px;
-}
-.list-scroll::-webkit-scrollbar-track {
-  background: transparent;
-}
-.list-scroll::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border-radius: 2px;
+  gap: 4px;
+  padding-right: 4px;
 }
 .add-more-btn {
-  padding: 8px;
+  padding: 10px;
   border: 1px dashed var(--border-color);
-  background: transparent;
-  border-radius: 6px;
-  font-size: 13px;
+  background: var(--bg-secondary);
+  font-size: 12px;
+  font-weight: 800;
   color: var(--text-secondary);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 .add-more-btn:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
+  background: var(--color-primary-bg);
 }
 </style>
